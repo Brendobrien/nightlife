@@ -1,0 +1,24 @@
+{
+  "name": "nightlife",
+  "version": "1.0.0",
+  "description": "<a href=\"https://brendobrien-nightlife.herokuapp.com\">https://brendobrien-nightlife.herokuapp.com</a>",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brendobrien/nightlife.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendobrien/nightlife/issues"
+  },
+  "homepage": "https://github.com/brendobrien/nightlife#readme"
+}
