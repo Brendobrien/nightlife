@@ -3,20 +3,20 @@
     <h3 style="text-align: center">Bars in?</h3>
   </div>
   <div class="column">
-      <input type="text" placeholder="Dallas">
+      <input type="text" ng-model="city" placeholder="Dallas">
   </div>
   <div class="column">
-    <button type="submit" class="button expanded">Search</button>
+    <button ng-click="search()" class="button expanded">Search</button>
   </div>
 </div>
 
 <div class="row small-up-1 medium-up-3 large-up-3">
-  <div ng-repeat="dog in dogs" class="column">
+  <div ng-repeat="bar in data" class="column">
     <div class="callout">
-      <p>Pegasi B</p>
-      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
-      <p class="lead">Copernican Revolution caused an uproar</p>
-      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+      <div class="bar-image"><img src="{{bar.image_url}}" alt="image of a {{bar.location.city}} bar"></div>
+      <br>
+      <a href="{{bar.url}}" target="_blank"><p class="lead">{{bar.name}}</p></a>
+      <p class="subheader">{{bar.rating}} Stars - {{bar.price}}</p>
     </div>
   </div>
 </div>
@@ -30,7 +30,7 @@
       <h5>styled by <a href="http://foundation.zurb.com/" target="_blank">Foundation</a></h5>
     </div>
     <div class="column kevin-spacey">
-      <h5>scripted by <a href="https://angularjs.org/" target="_blank">AngularJS</a></h5>
+      <h5>stacked by <a href="http://mean.io/" target="_blank">MEAN</a></h5>
     </div>
     <div class="column kevin-spacey">
       <h5>hacked by <a href="https://www.yelp.com/developers/documentation/v3" target="_blank">Brendan O'Brien</a></h5>
