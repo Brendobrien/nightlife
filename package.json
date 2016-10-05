@@ -4,7 +4,8 @@
   "description": "<a href=\"https://brendobrien-nightlife.herokuapp.com\">https://brendobrien-nightlife.herokuapp.com</a>",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "request": "^2.75.0"
   },
   "devDependencies": {},
   "scripts": {

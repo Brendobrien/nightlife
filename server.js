@@ -1,17 +1,15 @@
 const express = require('express'),
-  app = express();
+  app = express(),
+  path = require('path')
+  api = require('./api')
 
-app.route('/')
-.get((req, res)=> res.sendFile(process.cwd() + '/index.html'));
+app.route('/api')
+.get((req, res)=> api.yelp(req,res));
 
-app.route('/signin')
-.get((req, res)=> res.sendFile(process.cwd() + '/signin.html'));
-
-app.route('/signup')
-.get((req, res)=> res.sendFile(process.cwd() + '/signup.html'));
+app.use(express.static('public'));
+app.use(express.static('public/views'));
 
 var port = process.env.PORT || 3003;
-// const server = http.createServer(app);
 var server = app.listen(port, function(){
   console.log("Server listening on port "+port);
 });
