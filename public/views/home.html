@@ -1,3 +1,22 @@
+<div class="top-bar" id="my-info">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li ><a class="button" ui-sref="home">Bars in?</a></li>
+      <li><a ng-click="getCity('Dallas')">Dallas</a></li>
+      <li><a ng-click="getCity('New York')">New York</a></li>
+      <li><a ng-click="getCity('Los Angeles')"">Los Angeles</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li ng-show="auth"><a ui-sref="signin">Signout</a></li>
+      <li ng-hide="auth"><a ui-sref="signin">Signin</a></li>
+      <li ng-hide="auth"><a ui-sref="signup">Signup</a></li>
+    </ul>
+  </div>
+</div>
+
+<!--search bar-->
 <div class="row small-up-1 medium-up-3 large-up-3 kevin-spacey">
   <div class="column">
     <h3 style="text-align: center">Bars in?</h3>
@@ -6,25 +25,39 @@
       <input type="text" ng-model="city" placeholder="Dallas">
   </div>
   <div class="column">
-    <button ng-click="search()" class="button expanded">Search</button>
+    <button ng-click="getCity(city)" class="button expanded">Search</button>
   </div>
 </div>
 
-<div class="row small-up-1 medium-up-3 large-up-3">
+<!--spinner-->
+<div class="row spinner" ng-show="loading">
+  <img src="../img/Beer_poured.gif"/>
+</div>
+
+<!--bars-->
+<div class="row small-up-1 medium-up-2 large-up-3" ng-hide="loading">
   <div ng-repeat="bar in data" class="column">
     <div class="callout">
       <div class="bar-image"><img src="{{bar.image_url}}" alt="image of a {{bar.location.city}} bar"></div>
-      <br>
-      <a href="{{bar.url}}" target="_blank"><p class="lead">{{bar.name}}</p></a>
-      <p class="subheader">{{bar.rating}} Stars - {{bar.price}}</p>
+      <!--<br>-->
+      <p class="lead"><a href="{{bar.url}}" target="_blank">{{bar.name}}</a></p>
+      <p class="subheader">{{bar.rating}} Stars - {{bar.review_count}} reviews - {{bar.price}}</p>
+      <p class="subheader">{{bar.location.address1}}, {{bar.location.city}} {{bar.location.zip_code}}</p>
+      <a ng-click="goingTo(bar)" class="button u-going">0 GOING</a>
     </div>
   </div>
 </div>
 
+<!--no data bruh-->
+<div class="row bruh" ng-show="nodata">
+  <img src="http://vignette1.wikia.nocookie.net/ssb/images/8/8d/Bruh.jpg/revision/latest?cb=20141104062201"/>
+</div>
+
+<!--footer-->
 <footer>
   <div class="row small-up-1 medium-up-2 large-up-4">
     <div class="column kevin-spacey"> 
-      <h5>powered by <a href="https://www.yelp.com/developers/documentation/v3" target="_blank">Yelp API</a></h5>
+      <h5>powered by <a href="https://www.yelp.com/developers/documentation/v3" target="_blank">Yelp</a></h5>
     </div>
     <div class="column kevin-spacey">
       <h5>styled by <a href="http://foundation.zurb.com/" target="_blank">Foundation</a></h5>
@@ -33,7 +66,7 @@
       <h5>stacked by <a href="http://mean.io/" target="_blank">MEAN</a></h5>
     </div>
     <div class="column kevin-spacey">
-      <h5>hacked by <a href="https://www.yelp.com/developers/documentation/v3" target="_blank">Brendan O'Brien</a></h5>
+      <h5>hacked by <a href="https://www.yelp.com/developers/documentation/v3" target="_blank">Brendan</a></h5>
     </div>
   </div>
 </footer>

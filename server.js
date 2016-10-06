@@ -1,10 +1,24 @@
 const express = require('express'),
   app = express(),
-  path = require('path')
-  api = require('./api')
+  api = require('./controllers/api'),
+  bodyParser = require('body-parser');
+  
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-app.route('/api')
-.get((req, res)=> api.yelp(req,res));
+// DB Setup
+// mongoose.connect('mongodb://127/auth');
+
+// App Setup
+require('dotenv').load(),
+app.use(morgan('dev'));
+app.use(cors());
+app.use(bodyParser.json({ type: '*/*' }));
+// router(app);
+
+app.route('/api/yelp')
+.get((req, res) => api.yelp(req,res));
 
 app.use(express.static('public'));
 app.use(express.static('public/views'));

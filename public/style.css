@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background: #F0F0F3;
+  background: #F8F8F8;
 }
 
 .title {
@@ -17,10 +17,24 @@ body {
 }
 
 .bar-image {
-  height: 200px;
-  width: 300px; 
+  height: 180px;
+  width: 250px; 
   overflow: hidden;
   position: relative;
   margin: 0 auto;
+  margin-bottom: 0px;
   padding-bottom: 25px;
+}
+
+.lead {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.spinner {
+  padding: 75px 0px 75px 0px;
+}
+
+.bruh {
+  padding: 25px 0px 75px 0px;
 }
