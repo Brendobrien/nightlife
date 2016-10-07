@@ -11,11 +11,13 @@ angular.module('nightlife.routes',[])
   })
   .state('signin', {
     url: '/signin',
-    templateUrl: 'views/signin.html'
+    templateUrl: 'views/signin.html',
+    controller: 'SigninCtrl'
   })
   .state('signup', {
     url: '/signup',
-    templateUrl: 'views/signup.html'
+    templateUrl: 'views/signup.html',
+    controller: 'SignupCtrl'
   })
 
   $urlRouterProvider.otherwise('/home');
