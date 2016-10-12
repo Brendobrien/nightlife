@@ -2,13 +2,26 @@
 
 angular.module('nightlife.services', [])
 
+.factory('User', function($http){
+  return {
+    isAuthenticated : function() {
+      return (localStorage.token) ? true : false;
+    }
+    goingToBar: function(barid) {
+      $http.post(ROOT_URL, {
+        headers: { authorization: localStorage.getItem('token')}
+      })
+    }
+  }
+})
+
 .factory('Api', function($http){
   return {
     barsInDallas : function() {
       return Dallas;
     },
     barsInCity : function(city) {
-      return $http.get('/api/yelp?'+city);
+      return $http.get('/api/yelp?city='+city);
       // return Promise.resolve(newYork);
     }
   }

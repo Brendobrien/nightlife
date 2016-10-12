@@ -24,7 +24,7 @@ angular.module('nightlife.controllers')
         $state.go('home');
       })
       .catch(() => {
-        console.log('error')
+        $scope.error = "Signup failed";
       });
     }
   }

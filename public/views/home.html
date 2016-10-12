@@ -9,7 +9,7 @@
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li ng-show="auth"><a ui-sref="signin">Signout</a></li>
+      <li ng-show="auth"><a ng-click="signout()">Signout</a></li>
       <li ng-hide="auth"><a ui-sref="signin">Signin</a></li>
       <li ng-hide="auth"><a ui-sref="signup">Signup</a></li>
     </ul>

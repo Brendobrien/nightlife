@@ -2,15 +2,21 @@
 
 angular.module('nightlife.controllers')
 
-.controller('HomeCtrl', function($scope, $http, $timeout, Api) {
-    console.log('yes');
-    $scope.auth = false;
+.controller('HomeCtrl', function($scope, $state, $timeout, User, Api) { 
+    $scope.auth = User.isAuthenticated();
+    // $scope.auth = false
     $scope.loading = true;
     $scope.nodata = false;
+    
     (localStorage.city)
     ? $scope.city = localStorage.city
     : $scope.city = ''
     
+    $scope.signout = function() {
+      localStorage.removeItem("token");
+      $state.go("signin");
+    }
+
     $scope.goingTo = function(bar) {
       console.log(bar.id);
     }
@@ -26,8 +32,7 @@ angular.module('nightlife.controllers')
        $scope.loading = false; 
       }
       else {
-        // Api.barsInCity("New York")
-        $http.get('/api/yelp?city='+city).then(function(json) {
+        Api.barsInCity("New York").then(function(json) {
           console.log(json)
           $scope.data = json.data.businesses
           $scope.loading = false;

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const citySchema = new Schema({
-  email: String,
+  email: { type: String, unique: true, lowercase: true },
   city: String
 })
 
