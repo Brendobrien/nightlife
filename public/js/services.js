@@ -7,10 +7,18 @@ angular.module('nightlife.services', [])
     isAuthenticated : function() {
       return (localStorage.token) ? true : false;
     }
+  }
+})
+
+.factory('Bar', function($http) {
+  return {
     goingToBar: function(barid) {
-      $http.post(ROOT_URL, {
+      $http.post('/going?barid='+barid, {
         headers: { authorization: localStorage.getItem('token')}
       })
+    },
+    listBars: function() {
+      $http.get('/bars')
     }
   }
 })
