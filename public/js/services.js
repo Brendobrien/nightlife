@@ -13,12 +13,21 @@ angular.module('nightlife.services', [])
 .factory('Bar', function($http) {
   return {
     goingToBar: function(barid) {
-      $http.post('/going?barid='+barid, {
-        headers: { authorization: localStorage.getItem('token')}
-      })
+      // console.log(barid);
+      // +localStorage.getItem('email')
+
+      var req = {
+        method: 'POST',
+        url: '/going?barid='+barid+'&email='+localStorage.getItem('email'),
+        headers: {
+           'authorization': localStorage.getItem('token')
+        },
+      }
+
+      return $http(req);
     },
     listBars: function() {
-      $http.get('/bars')
+      return $http.get('/bars')
     }
   }
 })

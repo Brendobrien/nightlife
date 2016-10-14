@@ -20,6 +20,7 @@ angular.module('nightlife.controllers')
       console.log("ye");
       $http.post('/signup', { email, password })
       .then(response => {
+        localStorage.setItem('email', email);
         localStorage.setItem('token', response.data.token);
         $state.go('home');
       })

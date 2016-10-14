@@ -7,7 +7,7 @@ const barSchema = new Schema({
   createdAt: { type: Date, expires: 3600, default: Date.now },
   email: String,
   barid: String,
-  going: { type: Boolean, default: true }
+  going: { type: Number, default: 1 }
 })
 
 // Create the model class

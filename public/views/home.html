@@ -43,7 +43,7 @@
       <p class="lead"><a href="{{bar.url}}" target="_blank">{{bar.name}}</a></p>
       <p class="subheader">{{bar.rating}} Stars - {{bar.review_count}} reviews - {{bar.price}}</p>
       <p class="subheader">{{bar.location.address1}}, {{bar.location.city}} {{bar.location.zip_code}}</p>
-      <a ng-click="goingTo(bar)" class="button u-going">{{bar.going}} GOING</a>
+      <a ng-click="goingTo(bar)" class="button {{bar.style}}">{{bar.going}} GOING</a>
     </div>
   </div>
 </div>

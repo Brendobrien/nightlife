@@ -19,7 +19,8 @@ module.exports = function(app) {
   app.post('/signup', Authentication.signup);
 
   // Bars
-  // app.get('/bars', bar.listBars(req,res)) 
+  app.get('/bars', function (req,res) {bar.listBars(req,res)})
+  app.post('/going', requireAuth, function (req,res) {bar.goingToBar(req,res)})
 
   // API
   app.get('/api/yelp', function (req, res) {api.yelp(req,res)});
