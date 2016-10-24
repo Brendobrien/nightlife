@@ -10,6 +10,8 @@ angular.module('nightlife.controllers')
     (localStorage.getItem('city'))
     ? $scope.city = localStorage.getItem('city')
     : $scope.city = ''
+
+    getCity($scope.city);
     
     $scope.signout = function() {
       localStorage.removeItem("token");
@@ -32,10 +34,6 @@ angular.module('nightlife.controllers')
     $scope.getCity = function(city) {
       getCity(city);
     }
-    
-    // $scope.data = Api.barsInDallas()
-    getCity($scope.city);
-    // refreshPage();
 
     function getCity(city) {
       $scope.city = city;
@@ -62,10 +60,13 @@ angular.module('nightlife.controllers')
     }
 
     function refreshPage() {
-      $scope.data.map((x)=> {
-        x.going = 0;
-        x.style = '';
-      })
+     if(typeof $scope.data !== "undefined") {
+        $scope.data.map((x)=> {
+          x.going = 0;
+          x.style = '';
+        })
+      }
+
       Bar.listBars().then(function(list) {
         $scope.bars = list.data
         $scope.data.map((x) => {
